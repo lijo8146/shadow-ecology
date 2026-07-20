@@ -28,6 +28,6 @@ All notable decisions, locks, and major changes to Shadow Ecology are logged her
 - Selected: <region>
 - Rationale: see docs/region_selection_report.md
 
-## [Locked] Pre-Specification Document — YYYY-MM-DD
+## [Locked] Pre-Specification Document YYYY-MM-DD
 - Signed off by PI. Classifier training may now begin.
 ```
