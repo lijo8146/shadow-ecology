@@ -24,7 +24,7 @@ All notable decisions, locks, and major changes to Shadow Ecology are logged her
 ## [Locked] Region Selection Criteria — YYYY-MM-DD
 - Criteria (a)/(b)/(c) finalized and locked, no further changes without amendment.
 
-## [Locked] Study Region — YYYY-MM-DD
+## [Locked] Study Region YYYY-MM-DD
 - Selected: <region>
 - Rationale: see docs/region_selection_report.md
 
