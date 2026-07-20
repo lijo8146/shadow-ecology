@@ -71,11 +71,11 @@ Active Phase 1, Month 1 (project setup and region scoping).
 
 ## References
 
-Anselin, L. (1995). Local Indicators of Spatial Association—LISA. *Geographical Analysis*.
-Beven, K., & Binley, A. (1992). The future of distributed models. *Hydrological Processes*.
-Eamus, D. et al. (2015). Groundwater-dependent ecosystems: recent insights. *Hydrogeology Journal*.
-Fan, Y. et al. (2013). Global patterns of groundwater table depth. *Science*.
-Meyer, H., & Pebesma, E. (2021). Predicting into unknown space? *Methods in Ecology and Evolution*.
-Saltelli, A. et al. (2010). Variance based sensitivity analysis of model output. *Computer Physics Communications*.
-Schubert, E. et al. (2017). DBSCAN revisited. *ACM Transactions on Database Systems*.
-Wadoux, A. et al. (2021). Spatial cross-validation is not the right way to evaluate map accuracy. *Ecological Modelling*.
+Anselin, L. (1995). Local Indicators of Spatial Association—LISA. *Geographical Analysis*.  
+Beven, K., & Binley, A. (1992). The future of distributed models. *Hydrological Processes*.  
+Eamus, D. et al. (2015). Groundwater-dependent ecosystems: recent insights. *Hydrogeology Journal*.  
+Fan, Y. et al. (2013). Global patterns of groundwater table depth. *Science*.  
+Meyer, H., & Pebesma, E. (2021). Predicting into unknown space? *Methods in Ecology and Evolution*.  
+Saltelli, A. et al. (2010). Variance based sensitivity analysis of model output. *Computer Physics Communications*.  
+Schubert, E. et al. (2017). DBSCAN revisited. *ACM Transactions on Database Systems*.  
+Wadoux, A. et al. (2021). Spatial cross-validation is not the right way to evaluate map accuracy. *Ecological Modelling*.  
