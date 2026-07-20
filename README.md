@@ -50,11 +50,11 @@ Primary candidate: **Rio Grande Basin**, with **Colorado Plateau** and **Great B
 
 | Phase | Months | Focus |
 |---|---|---|
-| **1 — Data Assembly and Land Cover Modeling** | 1–6 | Region selection, RF/CNN training, residual field generation |
-| **2 — Residual Structure and Clustering** | 5–9 | Moran's I, LISA, DBSCAN, null-model validation |
+| **1 Data Assembly and Land Cover Modeling** | 1–6 | Region selection, RF/CNN training, residual field generation |
+| **2 Residual Structure and Clustering** | 5–9 | Moran's I, LISA, DBSCAN, null-model validation |
 | **Go/No-Go Decision** | End of Month 9 | Requires significant spatial structure (Moran's I p < 0.05), consistency across ≥2 metrics, robustness against null models |
-| **3 — Driver Attribution & Monitoring Gap Analysis** | 8–14 | Spatial regression against groundwater, land use, and monitoring density covariates; results shared with Tribal environmental programs |
-| **4 — Targeted Uncertainty Propagation** | 12–16 | Water balance / Sobol sensitivity analysis; manuscript and toolkit development |
+| **3 Driver Attribution & Monitoring Gap Analysis** | 8–14 | Spatial regression against groundwater, land use, and monitoring density covariates; results shared with Tribal environmental programs |
+| **4 Targeted Uncertainty Propagation** | 12–16 | Water balance / Sobol sensitivity analysis; manuscript and toolkit development |
 
 ## Repository Structure
 
