@@ -1,0 +1,42 @@
+# Data large rasters and intermediate outputs should not be committed
+data/raw/
+data/processed/
+data/training/
+results/residuals/
+*.tif
+*.tiff
+*.img
+*.nc
+*.h5
+*.hdf5
+
+# Model checkpoints
+*.pt
+*.pth
+*.joblib
+*.pkl
+
+# Credentials / tokens
+.env
+*.token
+cyverse_credentials*
+.netrc
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Environment
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Jupyter
+*.ipynb_checkpoints

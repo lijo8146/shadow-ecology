@@ -1,0 +1,35 @@
+name: shadow-ecology
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - geopandas
+  - rasterio
+  - rioxarray
+  - xarray
+  - scikit-learn
+  - scikit-image
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - libpysal
+  - esda
+  - pointpats
+  - spreg
+  - shapely
+  - fiona
+  - pyproj
+  - gdal
+  - dask
+  - joblib
+  - pip
+  - pip:
+      - sentinelsat
+      - planetary-computer
+      - pystac-client
+      - torch
+      - torchvision
+      - spatial-cv
