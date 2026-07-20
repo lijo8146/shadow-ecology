@@ -71,7 +71,7 @@ Active Phase 1, Month 1 (project setup and region scoping).
 
 ## References
 
-Anselin, L. (1995). Local Indicators of Spatial Association—LISA. *Geographical Analysis*.  
+Anselin, L. (1995). Local Indicators of Spatial Association-LISA. *Geographical Analysis*.  
 Beven, K., & Binley, A. (1992). The future of distributed models. *Hydrological Processes*.  
 Eamus, D. et al. (2015). Groundwater-dependent ecosystems: recent insights. *Hydrogeology Journal*.  
 Fan, Y. et al. (2013). Global patterns of groundwater table depth. *Science*.  
