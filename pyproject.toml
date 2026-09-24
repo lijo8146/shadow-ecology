@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+# Make the repository's `src` package importable when tests run from any
+# supported project invocation, including `pytest -q` on Windows.
+pythonpath = ["."]
+testpaths = ["tests"]

@@ -1,0 +1,28 @@
+# The only authoritative analysis extent for confirmatory processing.
+# This is a provisional desktop-analysis envelope, not a Tribal-jurisdiction
+# boundary, a fieldwork authorization, or a statement of sovereignty.
+study_area:
+  id: lower_walker_terminal_basin
+  name: "Lower Walker River–Walker Lake terminal-basin cluster, Nevada"
+  decision_date: "2026-09-24"
+  crs_analysis: "EPSG:32611"  # UTM zone 11N
+  crs_source: "EPSG:4326"
+  provisional_bbox_wgs84: [-119.20, 38.50, -118.55, 39.22]
+  hydrologic_scope: >-
+    Lower Walker River from the USGS Wabuska gage through Weber Reservoir and
+    the Walker River Paiute Reservation to Walker Lake, plus valley-floor and
+    adjacent landform contexts required for comparison.
+  upstream_anchor:
+    name: "USGS 10301500 — Walker River near Wabuska"
+    longitude: -119.0988889
+    latitude: 39.1524611
+  downstream_anchor:
+    name: "Walker Lake near Hawthorne"
+    longitude: -118.7720849
+    latitude: 38.6765864
+  boundary_workflow:
+    source: "NHDPlus HR/WBD plus documented manual AOI review"
+    required_before_download: true
+  governance_notice: >-
+    Follow governance_boundary_register.md before interpreting or releasing
+    place-specific results on or adjacent to Tribal lands or waters.

@@ -25,6 +25,8 @@ dependencies:
   - gdal
   - dask
   - joblib
+  - pyyaml
+  - pytest
   - pip
   - pip:
       - sentinelsat
@@ -32,4 +34,3 @@ dependencies:
       - pystac-client
       - torch
       - torchvision
-      - spatial-cv

@@ -12,6 +12,13 @@ All notable decisions, locks, and major changes to Shadow Ecology are logged her
 - Draft `docs/pre_specification.md`  pending sign-off
 - Draft `docs/region_selection_report.md`  pending Month 1 data inventory results
 - Draft `docs/data_dictionary.md`  living document, initial structure only
+- Configuration-driven analysis skeleton (`config/`, `src/`, `tests/`, and
+  versioned data-catalog and baseline-map specifications)
+- Governance boundary and public-data inventory registers
+
+### Changed
+- Study-region decision recorded: Lower Walker River–Walker Lake terminal-basin
+  cluster, Nevada. See `region_selection_report.md`.
 
 ### Pending Locks
 - [ ] Region selection criteria target: Month 1, Week 2

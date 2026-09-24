@@ -1,4 +1,9 @@
-# Shadow Ecology Pre-Specification Document
+# Shadow Ecology Pre-Specification Document (superseded draft)
+
+> **Superseded for confirmatory analysis by `pre_analysis_protocol.md` on
+> 2026-09-24.** This earlier draft is retained for project history only. The
+> current protocol controls residual grids, spatial validation, null models,
+> robustness criteria, governance guardrails, and the go/no-go decision.
 
 **Status:** DRAFT must be reviewed and signed off by PI before any classifier training begins
 **Locked:** [date to be filled in at sign-off, Month 2 Week 5–6]

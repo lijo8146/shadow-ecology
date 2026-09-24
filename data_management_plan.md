@@ -41,7 +41,7 @@ results/
 
 ## 5. Tribal Data Governance
 
-Monitoring data and contextual information sourced through Tribal environmental agency relationships are subject to the data use terms agreed with each partner (see `docs/data_use_statement.md`). Federal open datasets (USGS, NOAA, NLCD) are used under their standard public-domain terms; Tribal-sourced data is not treated the same way and is not redistributed without explicit agreement. Phase 3 results involving Tribal lands are shared back with the relevant Tribal environmental programs per the project workplan.
+Monitoring data and contextual information sourced through Tribal environmental agency relationships are subject to the data use terms agreed with each partner (see `data_use_statement.md` and `governance_boundary_register.md`). Federal open datasets (USGS, NOAA, NLCD) are used under their standard public-domain terms; Tribal-sourced data is not treated the same way and is not redistributed without explicit agreement. Phase 3 results involving Tribal lands are shared back with the relevant Tribal environmental programs per the project workplan.
 
 ## 6. Preservation and Sharing
 
@@ -54,3 +54,4 @@ Monitoring data and contextual information sourced through Tribal environmental 
 | Version | Date | Change |
 |---|---|---|
 | v1 | Month 1, Week 1 | Initial draft |
+| v1.1 | 2026-09-24 | Added `data_inventory.md` as acquisition and coverage register |

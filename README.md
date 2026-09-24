@@ -2,7 +2,8 @@
 
 **Mining Land Cover Model Residuals to Reveal Unmapped Hydrologic Drivers and Data Gaps in Sensor-Poor Landscapes**
 
-PI: Lilly Jones, PhD · CIRES, CU Boulder
+PI: Lilly Jones, PhD
+CIRES Earth and ESIIL Labs, CU Boulder
 IRP Pilot Study
 
 ## Overview
@@ -32,7 +33,11 @@ A single semi-arid western U.S. landscape, selected to satisfy:
 - **(b)** Monitoring network density is heterogeneous, including areas of chronic data sparsity such as Tribal lands
 - **(c)** Multi-resolution satellite imagery is freely accessible
 
-Primary candidate: **Rio Grande Basin**, with **Colorado Plateau** and **Great Basin** as pre-validated alternatives. Final selection locked at end of Month 2 (see `docs/region_selection_report.md`).
+**Selected focal area:** **Lower Walker River–Walker Lake terminal-basin
+cluster, Nevada.** The confirmatory scope extends from the Wabuska gage through
+Weber Reservoir and the Walker River Paiute Reservation to Walker Lake. See
+`region_selection_report.md`, `config/study_area.yaml`, and
+`governance_boundary_register.md`.
 
 ## Data Sources
 
@@ -59,10 +64,12 @@ Primary candidate: **Rio Grande Basin**, with **Colorado Plateau** and **Great B
 ## Repository Structure
 
 ```
-data/        raw and processed input datasets
+config/      authoritative study-area and dataset configuration
+data/        ignored data stores plus versioned catalog and manifests
+src/         reusable analysis utilities
+tests/       lightweight configuration and pipeline checks
 notebooks/   analysis and modeling notebooks
-results/     residual fields, statistical outputs, figures
-docs/        pre-specification, region selection, and review documents
+results/     ignored analytical outputs plus versioned map specifications
 ```
 
 ## Status

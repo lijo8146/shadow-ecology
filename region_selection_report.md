@@ -1,10 +1,12 @@
-# Shadow Ecology Region Selection Report (Draft)
+# Shadow Ecology Region Selection Report
 **PI:** Lilly Jones, PhD · CIRES, CU Boulder
-**Prepared:** Month 1, Week 4
-**Status:** DRAFT: for internal review; final decision due Month 2, Week 1 (locked, no revisiting)
+**Decision recorded:** 2026-09-24
+**Status:** DECISION LOCKED — changes require a dated amendment
 
 ## Purpose
-This report compares the three candidate study regions — Rio Grande Basin, Colorado Plateau, and Great Basin against the pre-defined selection criteria established in Month 1, Week 2. It is intended to provide the comparative evidence needed to lock the study region decision by end of Month 2.
+This report compares the three candidate study regions — Rio Grande Basin,
+Colorado Plateau, and Great Basin — against the pre-defined selection criteria.
+It records the final selection of a bounded Great Basin study area.
 
 ## Selection Criteria (locked, Month 1 Week 2)
 1. **Subsurface hydrology drives vegetation** vegetation patterns should be plausibly and mechanistically linked to depth-to-water / groundwater dynamics, not primarily to geology, soils, or irrigation.
@@ -20,16 +22,53 @@ This report compares the three candidate study regions — Rio Grande Basin, Col
 | **(c) Imagery access** | Excellent full coverage, no notable cloud issues | Good — full coverage, but canyon/mesa terrain adds shadow/elevation correction complexity | Excellent full coverage, generally clear skies aid cloud-free composites |
 | **Key risk** | Agricultural signal may confound the "natural" hydrology-vegetation relationship | Geologic/soil signal may be picked up by classifiers as hydrology signal, muddying residual interpretation | Lower vegetation class diversity may reduce textural signal available to CNN |
 
-## Open Items Before Final Decision
-- [ ] Confirm depth-to-water product coverage and resolution (Fan et al. 2013 / MODFLOW outputs) for each region availability could break a tie
-- [ ] Confirm USGS groundwater well density by region (Week 3 inventory)
-- [ ] Confirm monitoring network density memo findings (streamgages, NOAA stations, Tribal environmental monitoring programs)
-- [ ] Confirm Sentinel-2 seasonal cloud-free composite availability by region (Week 2–3 imagery memo)
+## Final Decision
 
-## Preliminary Recommendation
-*Pending confirmation of the open items above.* Based on criteria (a) and (c) alone, **Great Basin** presents the cleanest hydrology-driven vegetation signal with minimal confounding. **Rio Grande Basin** offers a starker monitoring-density contrast and richer land cover class diversity, at the cost of agricultural confounding. **Colorado Plateau** is viable but carries the highest risk of conflating geologic and hydrologic drivers.
+**Selected focal area: Lower Walker River–Walker Lake terminal-basin cluster,
+Nevada.**
 
-## Decision Rationale (to be completed Month 2, Week 5)
-*[Fill in after Month 1 data inventories are complete: see Region Selection Decision deliverable, locked no later than Month 2 Week 1.]*
+The analysis domain is the lower Walker River from the USGS Wabuska gage,
+through Weber Reservoir and the Walker River Paiute Reservation, to Walker Lake,
+plus the valley-floor and adjacent-landform contexts needed for comparison. The
+authoritative provisional desktop-analysis envelope is maintained in
+`config/study_area.yaml`; it is not a Tribal-jurisdiction boundary or fieldwork
+authorization.
 
-*This report feeds directly into the locked Region Selection Decision (Month 2, Week 5) per the Shadow Ecology pre-specification framework. Do not begin classifier training or image download until the region is locked.*
+The Wabuska gage demarcates the upper and lower Walker River basins, and USGS
+describes the lower system as a connected surface-water/groundwater system of
+losing and gaining reaches from Wabuska to Walker Lake. This creates a strong,
+mechanistic setting for testing whether residual patterns persist after known
+hydrologic and managed-water explanations are considered. [USGS conceptual
+model](https://pubs.usgs.gov/publication/sir20095155)
+
+### Decision rationale
+
+1. **Hydro-vegetation mechanism:** Lower Walker vegetation includes riparian
+   and groundwater-discharge settings, while the terminal lake, alluvial aquifer,
+   playa/saline surfaces, and river–aquifer exchange offer independent and
+   competing hydrologic contexts.
+2. **Monitoring and governance relevance:** The selected system includes the
+   Walker River Paiute Reservation and established environmental/water programs.
+   Public station coverage can be measured, but public-record sparsity will not
+   be represented as an absence of Tribal monitoring, data, or knowledge. The
+   operating boundaries are in `governance_boundary_register.md`.
+3. **Feasible scale:** The bounded Wabuska-to-Walker-Lake system retains
+   hydrologic and land-cover contrasts while remaining tractable for 10 m
+   seasonal composites, buffered spatial cross-validation, and repeated null
+   models.
+4. **Falsifiability:** Irrigation, managed conveyance/recharge, salinity/playa
+   conditions, geology, disturbance, and sparse training support are explicit
+   competing explanations. The project does not assume that vegetation or a
+   residual cluster is groundwater-driven.
+
+## Locked follow-up work
+
+- Validate public-data coverage and licensing in `data_inventory.md`.
+- Freeze the precise AOI geometry before downloading data, using the workflow in
+  `config/study_area.yaml`.
+- Apply `pre_analysis_protocol.md` before any classifier training.
+- Treat Snake–Spring Valleys as a future transferability/replication candidate,
+  not as part of the confirmatory focal-area analysis.
+
+Any change to this selection or scope requires a dated amendment documenting
+the rationale and whether modeling or residual inspection has already begun.

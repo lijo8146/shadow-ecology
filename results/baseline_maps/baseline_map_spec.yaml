@@ -1,0 +1,20 @@
+package_id: baseline_map_package_0
+study_area_config: config/study_area.yaml
+maps:
+  - id: aoI_hydrography_context
+    title: "Lower Walker River–Walker Lake: analysis extent and hydrography"
+    required_sources: [nhdplus_hr_wbd, usgs_waterdata]
+    output: results/baseline_maps/01_aoi_hydrography_context.png
+  - id: imagery_observation_coverage
+    title: "Seasonal Sentinel-2 valid-observation coverage"
+    required_sources: [sentinel2_l2a]
+    output: results/baseline_maps/02_sentinel2_observation_coverage.png
+  - id: public_monitoring_inventory
+    title: "Publicly documented monitoring inventory by period of record"
+    required_sources: [usgs_waterdata, nevada_dwr_monitoring]
+    output: results/baseline_maps/03_public_monitoring_inventory.png
+    required_caption: "Shows only the public inventory examined; it is not a map of all monitoring or local knowledge."
+  - id: land_cover_and_irrigation_context
+    title: "Land-cover labels and irrigation-confounder context"
+    required_sources: [nlcd, lanid]
+    output: results/baseline_maps/04_land_cover_irrigation_context.png

@@ -1,0 +1,12 @@
+dataset_id,role,status,source_register,local_target,required_before_modeling
+sentinel2_l2a,classifier_input,core_acquire,data_inventory.md,data/raw/sentinel2,yes
+landsat_c2_l2,temporal_context,core_acquire,data_inventory.md,data/raw/landsat,yes
+nlcd,training_label,core_acquire,data_inventory.md,data/raw/nlcd,yes
+usgs_waterdata,attribution,core_acquire,data_inventory.md,data/raw/usgs_waterdata,yes
+nhdplus_hr_wbd,hydrography_context,core_acquire,data_inventory.md,data/raw/hydrography,yes
+ssurgo_gssurgo,confounder,core_acquire,data_inventory.md,data/raw/soils,yes
+daymet,climate_context,core_acquire,data_inventory.md,data/raw/daymet,yes
+lanid,irrigation_confounder,core_acquire,data_inventory.md,data/raw/lanid,yes
+openet,attribution,candidate_validate,data_inventory.md,data/raw/openet,no
+nevada_dwr_monitoring,attribution,candidate_validate,data_inventory.md,data/raw/nevada_dwr,no
+nbmg_geology,confounder,candidate_validate,data_inventory.md,data/raw/nbmg_geology,no

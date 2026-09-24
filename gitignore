@@ -1,14 +1,25 @@
 # Data large rasters and intermediate outputs should not be committed
-data/raw/
-data/processed/
-data/training/
-results/residuals/
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/training/*
+!data/training/.gitkeep
+results/residuals/*
+!results/residuals/.gitkeep
 *.tif
 *.tiff
 *.img
 *.nc
 *.h5
 *.hdf5
+
+results/figures/*
+!results/figures/.gitkeep
+results/stats/*
+!results/stats/.gitkeep
 
 # Model checkpoints
 *.pt

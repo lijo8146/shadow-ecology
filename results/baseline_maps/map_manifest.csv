@@ -1,0 +1,5 @@
+map_id,status,source_manifest,output_path,review_status,notes
+aoi_hydrography_context,planned,,,not_started,Create after hydrography and station coverage QC
+imagery_observation_coverage,planned,,,not_started,Create after seasonal composite coverage QC
+public_monitoring_inventory,planned,,,not_started,Use approved public-coverage wording
+land_cover_and_irrigation_context,planned,,,not_started,Use as confounder context not a hydrologic result

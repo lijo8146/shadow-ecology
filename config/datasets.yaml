@@ -1,0 +1,14 @@
+# Catalog keys, not credentials or download URLs. Full source, license, and QC
+# requirements live in data_inventory.md and data/catalog/dataset_catalog.csv.
+datasets:
+  sentinel2_l2a: {role: classifier_input, status: core_acquire}
+  landsat_c2_l2: {role: temporal_context, status: core_acquire}
+  nlcd: {role: training_label, status: core_acquire}
+  usgs_waterdata: {role: attribution, status: core_acquire}
+  nhdplus_hr_wbd: {role: hydrography_context, status: core_acquire}
+  ssurgo_gssurgo: {role: confounder, status: core_acquire}
+  daymet: {role: climate_context, status: core_acquire}
+  lanid: {role: irrigation_confounder, status: core_acquire}
+  openet: {role: attribution, status: candidate_validate}
+  nevada_dwr_monitoring: {role: attribution, status: candidate_validate}
+  nbmg_geology: {role: confounder, status: candidate_validate}
