@@ -3,12 +3,12 @@ from pathlib import Path
 import yaml
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-CONFIG_DIR = PROJECT_ROOT / "config"
+CONFIG_DIR = PROJECT_ROOT/"config"
 
 
 def load_yaml(name: str) -> dict:
     """Load a named YAML configuration file from the project config directory."""
-    path = CONFIG_DIR / name
+    path = CONFIG_DIR/name
     with path.open(encoding="utf-8") as handle:
         return yaml.safe_load(handle)
 

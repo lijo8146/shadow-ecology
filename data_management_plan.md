@@ -1,19 +1,19 @@
 # Shadow Ecology Data Management Plan (v1)
 
 **Prepared:** Month 1, Week 1
-**PI:** Lilly Jones, PhD · CIRES, CU Boulder
+**PI:** Lilly Jones, PhD CIRES, CU Boulder
 
 ## 1. Data Sources
 
 | Dataset | Source | Access | Format |
 |---|---|---|---|
-| Sentinel-2 | ESA Copernicus / Microsoft Planetary Computer | Free, open | GeoTIFF (10 m) |
+| Sentinel-2 | ESA Copernicus/Microsoft Planetary Computer | Free, open | GeoTIFF (10 m) |
 | Landsat | NASA Earthdata | Free, open | GeoTIFF (30 m) |
 | PlanetScope | NASA CSDA Program | Free (CSDA allocation), opportunistic | GeoTIFF (3.7 m) |
 | NLCD land cover | USGS | Free, open | GeoTIFF (30 m) |
-| Groundwater wells / depth-to-water | USGS; Fan et al. 2013 product | Free, open | CSV / GeoTIFF |
+| Groundwater wells/depth-to-water | USGS; Fan et al. 2013 product | Free, open | CSV/GeoTIFF |
 | Building footprints | Microsoft / Google | Free, open | GeoPackage |
-| Monitoring network records | USGS, NOAA, Tribal environmental agencies | Federal: open; Tribal: by relationship/agreement | CSV / point files |
+| Monitoring network records | USGS, NOAA, Tribal environmental agencies | Federal: open; Tribal: by relationship/agreement | CSV/point files |
 
 ## 2. Storage and Compute
 

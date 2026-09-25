@@ -1,6 +1,5 @@
 # The only authoritative analysis extent for confirmatory processing.
-# This is a provisional desktop-analysis envelope, not a Tribal-jurisdiction
-# boundary, a fieldwork authorization, or a statement of sovereignty.
+# This is a provisional desktop-analysis envelope.
 study_area:
   id: lower_walker_terminal_basin
   name: "Lower Walker River–Walker Lake terminal-basin cluster, Nevada"
@@ -13,7 +12,7 @@ study_area:
     the Walker River Paiute Reservation to Walker Lake, plus valley-floor and
     adjacent landform contexts required for comparison.
   upstream_anchor:
-    name: "USGS 10301500 — Walker River near Wabuska"
+    name: "USGS 10301500 Walker River near Wabuska"
     longitude: -119.0988889
     latitude: 39.1524611
   downstream_anchor:

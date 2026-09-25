@@ -1,4 +1,4 @@
-# Data Use Statement — Tribal-Sourced Data
+# Data Use Statement for Tribal-Sourced Data
 
 **Status:** DRAFT to be reviewed and finalized in consultation with Tribal partners before any Tribal-sourced data is incorporated
 

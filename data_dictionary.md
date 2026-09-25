@@ -1,4 +1,4 @@
-# Shadow Ecology — Data Dictionary
+# Shadow Ecology Data Dictionary
 
 **Status:** Living document updated through Month 6 mid-project documentation sprint
 
@@ -14,19 +14,19 @@
 
 | Field | Formula / Source | Notes |
 |---|---|---|
-| `NDVI` | (NIR − Red) / (NIR + Red) | Vegetation index |
-| `NDWI` | (Green − NIR) / (Green + NIR) | Water index |
+| `NDVI` | (NIR - Red)/(NIR + Red) | Vegetation index |
+| `NDWI` | (Green - NIR)/(Green + NIR) | Water index |
 | `EVI` | Standard 3-band formula | Enhanced vegetation index |
 | `BSI` | Standard formula | Bare soil index |
 | `SAVI` | Standard formula, soil-adjustment factor documented at computation | Soil-adjusted vegetation index |
 | `slope`, `TWI` | Derived from DEM | Topographic wetness index and slope |
-| texture features | [method to be documented at computation, e.g. GLCM] | |
+| texture features | [method to be documented at computation, ex. GLCM] | |
 
 ## Land Cover Classes (NLCD-derived training labels)
 
 | Class code | Class name | Aggregation notes |
 |---|---|---|
-| [to be filled in during Wk 6–7 NLCD reclassification] | | Document any merged/split classes and rationale here |
+| [to be filled in during Wk 6-7 NLCD reclassification] | | Document any merged/split classes and rationale here |
 
 ## Residual Metrics
 
@@ -41,8 +41,8 @@
 | Field | Source | Notes |
 |---|---|---|
 | `well_density` | USGS groundwater well records | Density surface, spatially joined to study grid |
-| `depth_to_water` | Fan et al. 2013 / MODFLOW-derived product | Modeled raster |
-| `building_density` | Microsoft/Google building footprints | Computed at 500 m / 1 km / 2 km scales |
+| `depth_to_water` | Fan et al. 2013/MODFLOW-derived product | Modeled raster |
+| `building_density` | Microsoft/Google building footprints | Computed at 500 m/1 km/2 km scales |
 | `land_use_change` | Landsat time series change detection | Flags recently converted land |
 | `streamgage_density`, `weather_station_density` | USGS, NOAA | Point density surfaces |
 | `tribal_monitoring_presence` | Tribal environmental agency records | Documented per data use agreement; not all sources are publicly redistributable |
@@ -50,5 +50,5 @@
 
 ## Known Limitations / Data Gaps
 
-- NLCD label quality in Tribal and rural areas is expected to be lower. This is treated as a feature of the analysis (part of what the project aims to reveal), not purely a data quality problem to correct away.
+- NLCD label quality in Tribal and rural areas is expected to be lower. This is treated as a feature of the analysis (part of what the project aims to reveal).
 - [Additional limitations to be logged here as identified during Month 1–6 QC.]
