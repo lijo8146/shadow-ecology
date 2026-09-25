@@ -30,7 +30,7 @@ We target landscapes where monitoring infrastructure is chronically sparse, incl
 A single semi-arid western U.S. landscape, selected to satisfy:
 
 - **(a)** Subsurface hydrology exerts strong control on vegetation patterns
-- **(b)** Monitoring network density is heterogeneous, including areas of chronic data sparsity such as Tribal lands
+- **(b)** Monitoring network density is heterogeneous, including areas of chronic data sparsity                                                                                    
 - **(c)** Multi-resolution satellite imagery is freely accessible
 
 **Selected focal area:** **Lower Walker River–Walker Lake terminal-basin

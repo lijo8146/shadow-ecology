@@ -22,7 +22,7 @@ The candidate region must have full, reliable coverage from freely available ima
 
 ## Process
 
-1. Month 1: comparative evidence gathered for all three candidates against criteria (a)–(c) via imagery inventory, groundwater/monitoring network inventories, and literature review.
+1. Month 1: comparative evidence gathered for all three candidates against criteria (a)-(c) via imagery inventory, groundwater/monitoring network inventories, and literature review.
 2. Month 1, Week 4: Region Selection Report drafted, comparing candidates against criteria.
 3. Month 2, Week 5: final region selection locked based on Month 1 evidence. **No revisiting after this point.**
 

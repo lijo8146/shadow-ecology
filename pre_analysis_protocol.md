@@ -8,7 +8,7 @@ Shadow Ecology: confirmatory pre-analysis protocol
 
 This protocol fixes the project's confirmatory analysis before land-cover
 modeling. Spatially structured land-cover-model residuals are treated as
-diagnostic candidates, not direct evidence of shallow groundwater.
+diagnostic candidates.
 
 The primary hypothesis is supported only when residual clusters are spatially
 non-random, recur across model architectures and residual metrics, exceed
@@ -23,10 +23,10 @@ Weber Reservoir and the Walker River Paiute Reservation to Walker Lake, plus a
 valley-floor analysis buffer sufficient to represent groundwater-discharge,
 irrigated, playa/saline, shrubland, and upland settings.
 
-Use public data by default. Keep restricted and public data in separate stores.
+Keep restricted and public data in separate stores.
 Do not infer, publish, or expose sensitive locations or non-public Tribal
 environmental information without explicit authorization. Monitoring absence is
-a data gap, not evidence of the absence of Tribal data or knowledge.
+a data gap.
 
 Primary interpretation excludes persistent cloud, cloud shadow, snow, and
 quality-flagged imagery; open-water pixels; and sensitive or non-public sites.
@@ -146,7 +146,7 @@ Use at least 999 realizations per primary comparison.
 4. **Training-support null:** compare clusters with locations matched on label
    density, distance to labeled data, and class prevalence.
 
-Report effect sizes and empirical confidence intervals, not just p-values.
+Report effect sizes and empirical confidence intervals.
 
 ## Competing explanations
 

@@ -2,7 +2,7 @@
 
 **Version:** 1.0  
 **Date:** 2026-09-24  
-**Applies to:** Lower Walker River–Walker Lake terminal-basin study area
+**Applies to:** Lower Walker River-Walker Lake terminal-basin study area
 
 ## Purpose
 
@@ -12,22 +12,14 @@ not a legal determination of jurisdiction, data ownership, or consultation
 obligations. It does not substitute for a data-sharing agreement, research
 agreement, or a Tribe's own governance requirements.
 
-The project will not interpret low public monitoring density as evidence that
-Tribal monitoring, data, expertise, or priorities are absent.
-
 ## Governance entities in scope
 
 | Entity or program | Relationship to the selected study area | Project status | Required treatment |
 |---|---|---|---|
 | **Walker River Paiute Tribe** | Primary counterpart. The selected corridor includes the Walker River Paiute Reservation and waters connected to the Walker River, Weber Reservoir, and the Walker Lake confluence. | **Primary consultation counterpart** | Invite early consultation before interpreting or disseminating place-specific findings on Reservation lands or waters. Obtain written agreement before requesting, receiving, using, or retaining Tribe-supplied data, contextual knowledge, site locations, or review input. |
-| **Walker River Environmental Department / Water-resource and public-utilities programs** | Public sources document established environmental and water-management programs; their current priorities and data holdings must not be inferred from public material. | **Primary program-level contact pathway** | Ask the Tribe which office or designated representative should receive the project description. Do not assume a public agency page, historic staff listing, or federal contact is authorization to engage or share data. |
-| **Yerington Paiute Tribe** | Relevant upstream/contributory context near the Wabuska–Mason Valley transition. Public documentation describes water-quality and groundwater concerns in its area. | **Secondary consultation counterpart** | Begin with public data only. Consult before producing place-specific findings that concern Yerington Paiute lands, using Tribe-supplied information, or extending the final study boundary upstream to its lands or waters. |
-| **USGS Nevada Water Science Center; Nevada Division of Water Resources; EPA Region 9; Bureau of Indian Affairs; Bureau of Reclamation** | Public-data stewards, monitoring partners, and/or water-management agencies relevant to the system. | **Public-source / coordination entities** | Cite and document public datasets and metadata. Agency data do not substitute for Tribal data or authority; agency staff cannot grant permission to use Tribal-sourced data. |
-
-This register intentionally does not identify a generic “Tribal data gap” for
-the Great Basin or treat broad ancestral/homeland associations as a substitute
-for engaging the specific Tribal government(s) connected to the question and
-place at issue.
+| **Walker River Environmental Department/Water-resource and public-utilities programs** | Public sources document established environmental and water-management programs; their current priorities and data holdings must not be inferred from public material. | **Primary program-level contact pathway** | Ask the Tribe which office or designated representative should receive the project description. Do not assume a public agency page, historic staff listing, or federal contact is authorization to engage or share data. |
+| **Yerington Paiute Tribe** | Relevant upstream/contributory context near the Wabuska-Mason Valley transition. Public documentation describes water-quality and groundwater concerns in its area. | **Secondary consultation counterpart** | Begin with public data only. Consult before producing place-specific findings that concern Yerington Paiute lands, using Tribe-supplied information, or extending the final study boundary upstream to its lands or waters. |
+| **USGS Nevada Water Science Center; Nevada Division of Water Resources; EPA Region 9; Bureau of Indian Affairs; Bureau of Reclamation** | Public-data stewards, monitoring partners, and/or water-management agencies relevant to the system. | **Public-source/coordination entities** | Cite and document public datasets and metadata. Agency data do not substitute for Tribal data or authority; agency staff cannot grant permission to use Tribal-sourced data. |
 
 ## Data and information categories
 
@@ -54,7 +46,7 @@ The following are not permitted before consultation or written agreement:
 - Requesting or collecting non-public monitoring data, site locations, or local
   ecological/hydrologic knowledge.
 - Representing a result as a Tribal monitoring gap, Tribal priority, or Tribal
-  interpretation.
+  interpretation without consultation.
 - Publishing a map or ranked intervention/field-validation list that singles
   out locations on or immediately adjacent to Tribal lands/waters without first
   offering contextual review to the relevant Tribe.
@@ -83,26 +75,8 @@ The following are not permitted before consultation or written agreement:
    review arrangements. Aggregate, mask, defer, or omit sensitive products as
    required.
 
-Consultation is not a one-time data-acquisition step. It does not obligate a
-Tribe to participate, share information, endorse the project, or accept the
-project's interpretations.
-
-## Monitoring-gap language standard
-
-Use one of the following formulations in reports and maps:
-
-- “Sparse coverage in the public monitoring inventory examined.”
-- “Low density of publicly documented stations for the selected date range.”
-- “A candidate area for further validation, subject to local and Tribal
-  priorities and governance.”
-
-Do not use:
-
-- “No monitoring on Tribal lands.”
-- “Tribal data gap,” unless the relevant Tribal government expressly adopts
-  that characterization for the stated purpose.
-- “Groundwater-driven vegetation” based only on residuals or public monitoring
-  absence.
+Consultation does not obligate a Tribe to participate, share information, endorse the project, 
+or accept the project's interpretations.
 
 ## Evidence and source notes
 

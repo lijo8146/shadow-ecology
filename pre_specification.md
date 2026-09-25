@@ -6,9 +6,9 @@
 > robustness criteria, governance guardrails, and the go/no-go decision.
 
 **Status:** DRAFT must be reviewed and signed off by PI before any classifier training begins
-**Locked:** [date to be filled in at sign-off, Month 2 Week 5–6]
+**Locked:** [date to be filled in at sign-off, Month 2 Week 5-6]
 
-> This document exists to prevent post-hoc adjustment of the analysis plan. If methodological decisions are made after seeing residual patterns, the core claim that residual structure reveals real processes — is compromised. Nothing below may be changed after lock without a documented, dated amendment.
+> This document exists to prevent post-hoc adjustment of the analysis plan. If methodological decisions are made after seeing residual patterns, the core claim that residual structure reveals real processes is compromised. Nothing below may be changed after lock without a documented, dated amendment.
 
 ## 1. Residual Metrics (exact definitions)
 
@@ -28,15 +28,15 @@ Each metric is analyzed **separately**, not combined into a composite index, per
 
 ## 3. Clustering (DBSCAN)
 
-- Run on residual field values aggregated to a coarser grid (500 m or 1 km), not pixel-level.
-- Epsilon and `min_samples` tuned via k-distance plot and variogram analysis; final parameter choices documented before use, not adjusted post-hoc based on cluster appearance.
+- Run on residual field values aggregated to a coarser grid (500 m or 1 km).
+- Epsilon and `min_samples` tuned via k-distance plot and variogram analysis; final parameter choices documented before use.
 
 ## 4. Null Model Procedures
 
 1. **Spatial randomization** residual field values randomly permuted across spatial units (999 iterations); observed Moran's I must exceed the 95th percentile of the null distribution.
 2. **Label permutation** training labels randomly permuted before classification (999 iterations); residuals and Moran's I recomputed for each permuted run, confirming observed structure exceeds what arbitrary label assignment produces.
 
-## 5. Cross-Metric / Cross-Architecture Robustness Rule
+## 5. Cross-Metric/Cross-Architecture Robustness Rule
 
 A cluster is considered **robust** and advances to Phase 3 driver attribution, only if it is present across:
 - at least 2 of the 3 residual metrics, **and**
@@ -49,7 +49,7 @@ All of the following must hold:
 - Consistency across at least 2 of 3 residual metrics
 - Robustness confirmed against both null model types
 
-**If not met:** Phase 3 is abbreviated. The project pivots to characterizing when/why residuals are not informative, and that finding is prepared for publication rather than treated as project failure.
+**If not met:** Phase 3 is abbreviated. The project pivots to characterizing when/why residuals are not informative, and that finding is prepared for publication.
 
 ## 7. Sign-Off
 
