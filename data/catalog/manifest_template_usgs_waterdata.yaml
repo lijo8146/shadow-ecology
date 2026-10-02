@@ -1,0 +1,82 @@
+# Manifest template — USGS Water Data for the Nation (wells, gages, water quality)
+# Covers USGS NWIS groundwater, streamflow, and water-quality queries.
+# See data/catalog/README.md for field definitions.
+# Governance class: P1 raw / P2 for place-specific release on or adjacent to Tribal lands
+# Source register: data_inventory.md
+
+dataset_id: usgs_waterdata
+role: attribution
+status: core_acquire
+source_url: "https://waterdata.usgs.gov/"
+access_method: "USGS NWIS REST API (dataRetrieval R package or direct REST queries)"
+license: "USGS public domain"
+license_url: "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+
+# ── Query parameters (record exactly; paste the API URLs used) ───────────────
+query_date: null
+query_aoi_bbox_wgs84: null     # must match config/study_area.yaml
+query_aoi_source: "data/catalog/aoi_final.geojson"
+service_endpoints_used: []     # e.g. [site, gwlevels, measurements, qwdata]
+
+# ── Site inventory ────────────────────────────────────────────────────────────
+# One entry per queried service type
+services:
+  - service: groundwater_sites
+    site_count: null
+    variables_queried: [site_no, station_nm, dec_lat_va, dec_long_va,
+                        alt_va, alt_datum_cd, well_depth_va, hole_depth_va,
+                        agency_cd, site_tp_cd]
+    record_date_range: null   # e.g. 1940-01-01 / 2024-12-31
+    output_file: null         # e.g. data/raw/usgs_waterdata/gw_sites_aoi.csv
+    checksum_sha256: null
+
+  - service: groundwater_levels
+    site_count: null
+    variables_queried: [site_no, lev_dt, lev_va, lev_status_cd, lev_meth_cd,
+                        lev_agency_cd, lev_acy_cd]
+    provisional_records_included: null   # true/false
+    record_date_range: null
+    output_file: null
+    checksum_sha256: null
+
+  - service: streamflow_sites
+    site_count: null
+    variables_queried: [site_no, station_nm, dec_lat_va, dec_long_va,
+                        alt_va, alt_datum_cd, agency_cd, begin_date, end_date]
+    record_date_range: null
+    output_file: null
+    checksum_sha256: null
+
+  - service: water_quality_sites
+    site_count: null
+    variables_queried: [site_no, station_nm, dec_lat_va, dec_long_va,
+                        agency_cd, begin_date, end_date]
+    record_date_range: null
+    output_file: null
+    checksum_sha256: null
+
+# ── NGWMN supplement ─────────────────────────────────────────────────────────
+ngwmn_queried: null           # true/false
+ngwmn_query_date: null
+ngwmn_output_file: null
+ngwmn_checksum_sha256: null
+ngwmn_deduplication_note: >-
+  Document USGS/NGWMN overlap and deduplication method before building
+  the public monitoring-inventory table.
+
+# ── Coverage QC ──────────────────────────────────────────────────────────────
+coverage_report_path: null    # e.g. results/coverage/usgs_monitoring_inventory.csv
+coverage_pass: null
+
+# ── Governance note ───────────────────────────────────────────────────────────
+governance_note: >-
+  Public well coordinates near Tribal lands are P2. Before external release of
+  any map that flags or characterizes locations on or immediately adjacent to
+  Tribal lands/waters, follow the release workflow in governance_boundary_register.md.
+  Public-inventory records describe public-agency data only; they do not represent
+  Tribal monitoring capacity or local environmental knowledge.
+
+# ── Processing provenance ─────────────────────────────────────────────────────
+processing_steps: []
+
+notes: ""

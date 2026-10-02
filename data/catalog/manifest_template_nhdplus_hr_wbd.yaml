@@ -1,0 +1,76 @@
+# Manifest template — USGS NHDPlus HR / Watershed Boundary Dataset (WBD)
+# Also the source for the frozen AOI geometry (aoi_final.geojson).
+# See data/catalog/README.md for field definitions.
+# Governance class: P1 (public, general-use)  |  Source register: data_inventory.md
+
+dataset_id: nhdplus_hr_wbd
+role: hydrography_context
+status: core_acquire
+source_url: "https://www.usgs.gov/national-hydrography/access-national-hydrography-products"
+access_method: "USGS National Map downloader or pynhd Python package"
+license: "USGS public domain"
+license_url: "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+
+# ── Fields to complete at download time ─────────────────────────────────────
+download_date: null
+nhdplus_hr_version: null    # e.g. NHDPLUS_H_1605_HU4_GDB.zip (HUC-4 region 1605)
+wbd_version: null
+huc4_region: "1605"         # Great Basin - NW
+huc8_subbasin: "16050302"   # Walker Lake / Lower Walker River
+native_crs: "EPSG:4326"
+local_path_nhdplus: null    # e.g. data/raw/hydrography/NHDPlus_H_1605.gpkg
+local_path_wbd: null
+checksum_sha256_nhdplus: null
+checksum_sha256_wbd: null
+
+# ── AOI geometry outputs ──────────────────────────────────────────────────────
+aoi_decision_note: "data/catalog/aoi_decision_note.md"
+aoi_vector_output: "data/catalog/aoi_final.geojson"
+aoi_crs: "EPSG:4326"
+aoi_area_km2: null          # compute after extraction; update aoi_decision_note.md §4
+aoi_checksum_sha256: null
+aoi_contains_wabuska_anchor: null    # true/false — verify after extraction
+aoi_contains_walker_lake_anchor: null
+
+# ── Feature layers extracted ─────────────────────────────────────────────────
+layers_extracted:
+  - layer: flowlines_streams
+    nhd_feature_type: "NHDFlowline"
+    fcode_filter: []         # e.g. [46006, 46003] StreamRiver; leave empty for all
+    output_file: null
+    checksum_sha256: null
+
+  - layer: canals_ditches
+    nhd_feature_type: "NHDFlowline"
+    fcode_filter: [33600, 33601, 33603]   # Canal/Ditch FCodes
+    output_file: null
+    checksum_sha256: null
+
+  - layer: waterbodies
+    nhd_feature_type: "NHDWaterbody"
+    fcode_filter: []         # include lakes, reservoirs, playa (36100, 39004, 36100)
+    output_file: null
+    checksum_sha256: null
+
+  - layer: springs
+    nhd_feature_type: "NHDPoint"
+    fcode_filter: [45800]    # Spring/Seep FCode
+    output_file: null
+    checksum_sha256: null
+    absence_note: >-
+      Mapped spring absence is not physical absence; NHDPlus HR spring/seep
+      attribution may be incomplete.
+
+  - layer: watershed_context_huc8
+    nhd_feature_type: "WBD HUC-8"
+    output_file: null
+    checksum_sha256: null
+
+# ── Coverage QC ──────────────────────────────────────────────────────────────
+coverage_report_path: null
+coverage_pass: null
+
+# ── Processing provenance ─────────────────────────────────────────────────────
+processing_steps: []
+
+notes: ""

@@ -1,0 +1,60 @@
+# Manifest template — NRCS SSURGO / gSSURGO soils
+# See data/catalog/README.md for field definitions.
+# Governance class: P1 (public, general-use)  |  Source register: data_inventory.md
+
+dataset_id: ssurgo_gssurgo
+role: confounder
+status: core_acquire
+source_url: "https://www.nrcs.usda.gov/resources/data-and-reports/soil-survey-geographic-database-ssurgo"
+source_url_ssurgo: "https://www.nrcs.usda.gov/resources/data-and-reports/soil-survey-geographic-database-ssurgo"
+source_url_gssurgo: "https://www.nrcs.usda.gov/resources/data-and-reports/gridded-soil-survey-geographic-gssurgo-database"
+access_method: "NRCS Web Soil Survey (WSS) or Soil Data Access (SDA) API; gSSURGO national GeoTIFF"
+license: "USDA-NRCS public data"
+license_url: "https://www.nrcs.usda.gov/resources/data-and-reports/soil-survey-geographic-database-ssurgo"
+
+# ── Fields to complete at download time ─────────────────────────────────────
+download_date: null
+ssurgo_release_date: null    # e.g. Fiscal Year 2024 vintage
+gssurgo_product: null        # e.g. gSSURGO_NV_10m or CONUS_30m
+gssurgo_resolution_m: null   # 10 or 30
+native_crs_ssurgo: "EPSG:4326"
+native_crs_gssurgo: "EPSG:5070"   # Albers Equal Area Conic
+local_path_ssurgo: null
+local_path_gssurgo: null
+checksum_sha256_ssurgo: null
+checksum_sha256_gssurgo: null
+
+# ── Attributes assessed ──────────────────────────────────────────────────────
+# Complete after coverage QC (Week 3 task W3-4)
+attribute_completeness:
+  electrical_conductivity_ec:
+    attribute: "elec_cond"        # SSURGO component field
+    completeness_pct_aoi: null
+    notes: ""
+  drainage_class:
+    attribute: "drainagecl"
+    completeness_pct_aoi: null
+    notes: ""
+  soil_texture:
+    attribute: "texdesc"
+    completeness_pct_aoi: null
+    notes: ""
+  map_unit_completeness:
+    null_mapunit_pct_aoi: null    # fraction of AOI with NOTCOM or null map units
+    notes: ""
+
+# ── Coverage QC ──────────────────────────────────────────────────────────────
+coverage_report_path: null
+coverage_pass: null
+
+# ── Known limitations ────────────────────────────────────────────────────────
+known_limitations: >-
+  Remote western survey gaps; map-unit attributes are representative of the
+  survey unit, not point observations. EC/salinity attributes may be sparse in
+  the Walker Lake playa margins. Treat as a competing-explanation confounder,
+  not a direct salinity measurement.
+
+# ── Processing provenance ─────────────────────────────────────────────────────
+processing_steps: []
+
+notes: ""

@@ -1,12 +1,32 @@
 # The only authoritative analysis extent for confirmatory processing.
-# This is a provisional desktop-analysis envelope.
+# Boundary status updated 2026-10-01: geometry method frozen; NHDPlus HR/WBD
+# extraction and final vector file pending download. See data/catalog/aoi_decision_note.md.
 study_area:
   id: lower_walker_terminal_basin
   name: "Lower Walker River–Walker Lake terminal-basin cluster, Nevada"
   decision_date: "2026-09-24"
+  boundary_frozen_date: "2026-10-01"
+  aoi_decision_note: "data/catalog/aoi_decision_note.md"
+  aoi_vector_file: "data/catalog/aoi_final.geojson"   # written after NHDPlus download
+  aoi_geometry_status: "method_frozen_extraction_pending"
   crs_analysis: "EPSG:32611"  # UTM zone 11N
   crs_source: "EPSG:4326"
   provisional_bbox_wgs84: [-119.20, 38.50, -118.55, 39.22]
+  aoi_buffer_km: 2
+  # Primary imagery and reference-label years are frozen before any download.
+  # Selection rationale: 2023 is the most recent calendar year with a complete
+  # Sentinel-2 archive and a matching NLCD annual product (NLCD 2021 Products
+  # v2.0 includes annual series through 2023).  Three usable seasons
+  # (spring Apr–May, peak Jul–Aug, late Sep–Oct) are available.
+  imagery_target_year: 2023
+  reference_label_year: 2023   # NLCD annual 2023 product
+  imagery_year_decision_date: "2026-10-01"
+  imagery_year_rationale: >-
+    2023 selected as the primary year: most recent complete calendar year at
+    decision date, full three-season Sentinel-2 L2A archive available, and
+    within the NLCD annual series (1985–2023, Products v2.0 released June 2026).
+    Landsat Collection 2 L2 is available for historical context from 2000 onward.
+    Year locked before imagery download per data_inventory.md §Acquisition checks.
   hydrologic_scope: >-
     Lower Walker River from the USGS Wabuska gage through Weber Reservoir and
     the Walker River Paiute Reservation to Walker Lake, plus valley-floor and
@@ -20,7 +40,7 @@ study_area:
     longitude: -118.7720849
     latitude: 38.6765864
   boundary_workflow:
-    source: "NHDPlus HR/WBD plus documented manual AOI review"
+    source: "NHDPlus HR/WBD HUC-8 16050302 plus 2 km valley-floor buffer"
     required_before_download: true
   governance_notice: >-
     Follow governance_boundary_register.md before interpreting or releasing

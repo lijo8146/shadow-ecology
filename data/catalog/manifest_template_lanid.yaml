@@ -1,0 +1,50 @@
+# Manifest template — LANID-US irrigated-land annual dataset
+# See data/catalog/README.md for field definitions.
+# Governance class: P1, subject to source terms  |  Source register: data_inventory.md
+
+dataset_id: lanid
+role: irrigation_confounder
+status: core_acquire
+source_url: "https://zenodo.org/records/5548555"
+access_method: "Zenodo direct download"
+license: "Verify at download — cite selected release and confirm redistribution terms"
+license_url: "https://zenodo.org/records/5548555"
+
+# ── Fields to complete at download time ─────────────────────────────────────
+download_date: null
+lanid_version: null          # e.g. LANID-US v1.0
+record_years_available: "1997–2017"
+record_years_downloaded: null  # e.g. 1997–2017 (full archive)
+resolution_m: 30
+native_crs: "EPSG:5070"     # Albers Equal Area Conic (confirm at download)
+local_path: null             # e.g. data/raw/lanid/
+checksum_sha256: null
+
+# ── Post-2017 update strategy ────────────────────────────────────────────────
+# LANID ends in 2017; imagery target year is 2023.  Document the update method
+# below before using irrigation context in modeling.
+post_2017_update_method: null
+# Options (record rationale and reference):
+#   a) OpenET monthly evapotranspiration irrigation signal (candidate_validate)
+#   b) Sentinel-2/Landsat seasonal NDVI persistence anomaly detection
+#   c) USGS/NWIS irrigated acreage reports or state water-right records
+#   d) Combination with documented weights
+post_2017_update_reference: null
+post_2017_update_decision_date: null
+
+# ── Coverage QC ──────────────────────────────────────────────────────────────
+coverage_report_path: null
+aoi_irrigated_area_ha_2017: null  # area-of-record irrigated pixels within AOI
+coverage_pass: null
+
+# ── Known limitations ────────────────────────────────────────────────────────
+known_limitations: >-
+  LANID ends in 2017 and may omit small-scale, intermittent, or pasture
+  irrigation. Canals and recharge may affect vegetation beyond mapped field
+  boundaries. Irrigation is a pre-specified competing explanation; treat the
+  LANID/update layer as a confounder control, not a hydrologic result.
+
+# ── Processing provenance ─────────────────────────────────────────────────────
+processing_steps: []
+
+notes: ""

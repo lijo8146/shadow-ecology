@@ -1,0 +1,42 @@
+# Manifest template — NLCD (National Land Cover Database)
+# See data/catalog/README.md for field definitions.
+# Governance class: P1 (public, general-use)  |  Source register: data_inventory.md
+
+dataset_id: nlcd
+role: training_label
+status: core_acquire
+source_url: "https://www.usgs.gov/data/national-land-cover-database-nlcd-2021-products-ver-20-june-2026"
+access_method: "MRLC direct download or USGS ScienceBase"
+license: "CC0 1.0 Universal (NLCD 2021 Products v2.0)"
+license_url: "https://creativecommons.org/publicdomain/zero/1.0/"
+
+# ── Fields to complete at download time ─────────────────────────────────────
+download_date: null
+product_version: "NLCD 2021 Products v2.0"    # confirm at download
+product_release_date: "2026-06"               # confirm at download
+label_year: null     # must match reference_label_year in config/study_area.yaml
+resolution_m: 30
+native_crs: "EPSG:5070"   # Albers Equal Area Conic; re-project to EPSG:32611 for analysis
+checksum_sha256: null
+local_path: null           # e.g. data/raw/nlcd/nlcd_2023_land_cover_l48_20240104.img
+
+# ── Class scheme ─────────────────────────────────────────────────────────────
+# Populated during Week 3 crosswalk task (W3-7)
+class_scheme_url: "https://www.mrlc.gov/data/legends/national-land-cover-database-class-legend-and-description"
+crosswalk_file: null       # e.g. data/catalog/nlcd_to_protocol_crosswalk.csv
+
+# ── Coverage QC ──────────────────────────────────────────────────────────────
+coverage_report_path: null
+aoi_coverage_pct: null     # fraction of AOI with non-null label
+coverage_pass: null
+
+# ── Known limitations ────────────────────────────────────────────────────────
+known_limitations: >-
+  Not field truth. Likely confusion at riparian/wet-meadow, wet-meadow/pasture,
+  saline/playa, and agriculture/pasture edges. Label quality in rural and Tribal
+  areas is expected to be lower (treated as a feature of the analysis).
+
+# ── Processing provenance ─────────────────────────────────────────────────────
+processing_steps: []
+
+notes: ""

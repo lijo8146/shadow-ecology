@@ -1,0 +1,48 @@
+# Manifest template — Landsat Collection 2 Level-2
+# See data/catalog/README.md for field definitions.
+# Governance class: P1 (public, general-use)  |  Source register: data_inventory.md
+
+dataset_id: landsat_c2_l2
+role: temporal_context
+status: core_acquire
+source_url: "https://www.usgs.gov/landsat-missions/landsat-collection-2"
+access_method: "USGS EarthExplorer download or pystac-client USGS STAC API"
+license: "USGS public domain (no-cost)"
+license_url: "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+
+# ── Fields to complete at download time ─────────────────────────────────────
+download_date: null
+query_aoi_bbox_wgs84: null
+query_aoi_source: "data/catalog/aoi_final.geojson"
+target_years:
+  primary: null         # imagery_target_year from config/study_area.yaml
+  historical_start: 2000
+  historical_end: null  # set to imagery_target_year
+
+sensors_acquired:
+  - sensor: null        # e.g. Landsat 8 OLI-TIRS / Landsat 9 OLI-2-TIRS2
+    collection: "Collection 2"
+    product_level: "Level-2"
+    quality_mask_bands: []  # e.g. [QA_PIXEL, QA_RADSAT]
+    scenes: []
+    # Each scene:
+    # - product_id: null
+    #   path_row: null       # e.g. 042/033
+    #   sensing_date: null
+    #   cloud_cover_pct: null
+    #   slc_off: null        # true if Landsat 7 post-2003
+    #   checksum_sha256: null
+    #   local_path: null
+
+cross_sensor_harmonization_note: >-
+  Document resampling, normalization, and cross-sensor harmonization approach
+  before combining Landsat 8 and Landsat 9 (or Landsat 7) temporal summaries.
+
+# ── Coverage QC ─────────────────────────────────────────────────────────────
+coverage_report_path: null
+coverage_pass: null
+
+# ── Processing provenance ────────────────────────────────────────────────────
+processing_steps: []
+
+notes: ""

@@ -1,0 +1,51 @@
+# Manifest template — Nevada Division of Water Resources (DWR) monitoring
+# Week 3 task: query availability; document inclusion or exclusion.
+# See data/catalog/README.md for field definitions.
+# Governance class: P1 unless source specifies otherwise  |  Source register: data_inventory.md
+
+dataset_id: nevada_dwr_monitoring
+role: attribution
+status: candidate_validate
+source_url: "https://water.nv.gov/programs/nevada-water-initiative/enhanced-hydrologic-monitoring"
+access_method: "Nevada DWR website or API — verify download/API terms at time of access"
+license: "Public-facing; verify download and redistribution terms before use"
+license_url: "https://water.nv.gov/"
+
+# ── Availability assessment (required before use) ──────────────────────────
+assessment_date: null       # YYYY-MM-DD
+
+# Record one of: included | excluded | unavailable_for_this_version
+inclusion_decision: null
+
+# If included:
+included_terms_documented: null        # true/false
+included_variables: []                 # list of variables confirmed available
+included_stations_in_aoi: null         # count
+included_deduplication_plan: null      # describe overlap with USGS NWIS
+
+# If excluded or unavailable:
+exclusion_reason: null
+# Examples:
+#   "API terms prohibit redistribution of derived products at this stage"
+#   "No Lower Walker stations found in available data"
+#   "Data only available for water-rights purposes; not aligned with project variables"
+
+# ── Fields to complete if included ─────────────────────────────────────────
+download_date: null
+query_aoi_bbox_wgs84: null
+query_aoi_source: "data/catalog/aoi_final.geojson"
+local_path: null
+checksum_sha256: null
+
+# ── Coverage QC ──────────────────────────────────────────────────────────────
+coverage_report_path: null
+coverage_pass: null
+
+# ── Processing provenance ─────────────────────────────────────────────────────
+processing_steps: []
+
+notes: >-
+  Nevada DWR Enhanced Hydrologic Monitoring may provide supplemental Lower
+  Walker River stations, variables, and formats not in USGS NWIS. Before
+  using, confirm API terms, variable alignment, datum compatibility, and
+  deduplication plan with NWIS data.

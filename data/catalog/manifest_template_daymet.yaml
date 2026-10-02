@@ -1,0 +1,38 @@
+# Manifest template — Daymet V4 R1 daily climate
+# See data/catalog/README.md for field definitions.
+# Governance class: P1 (public, general-use)  |  Source register: data_inventory.md
+
+dataset_id: daymet
+role: climate_context
+status: core_acquire
+source_url: "https://daymet.ornl.gov/"
+access_method: "ORNL DAAC Daymet API (daymetr R package or Python request)"
+license: "NASA EOSDIS Open Data policy / CC BY 4.0"
+license_url: "https://daymet.ornl.gov/overview"
+
+# ── Fields to complete at download time ─────────────────────────────────────
+download_date: null
+daymet_version: "V4 R1"      # confirm at download
+variables_downloaded: [tmin, tmax, prcp, srad, vp, swe, dayl]
+start_year: 1980
+end_year: null               # set to imagery_target_year from config/study_area.yaml
+query_aoi_bbox_wgs84: null   # must match config/study_area.yaml
+native_crs: "EPSG:4326 (Daymet delivers in LCC; document projection)"
+native_resolution_km: 1
+local_path: null             # e.g. data/raw/daymet/
+checksum_sha256: null
+
+# ── Coverage QC ──────────────────────────────────────────────────────────────
+coverage_report_path: null
+coverage_pass: null
+
+# ── Known limitations ────────────────────────────────────────────────────────
+known_limitations: >-
+  1 km interpolation smooths valley/mountain gradients and underrepresents
+  station scarcity in the Walker Valley. Retain native scale before aggregating
+  to the 250 m analysis grid. Do not use as a direct climate observation.
+
+# ── Processing provenance ─────────────────────────────────────────────────────
+processing_steps: []
+
+notes: ""

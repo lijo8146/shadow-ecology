@@ -1,0 +1,60 @@
+# Manifest template — Sentinel-2 Level-2A
+# Complete one block per scene (or per seasonal composite batch).
+# See data/catalog/README.md for field definitions.
+# Governance class: P1 (public, general-use)  |  Source register: data_inventory.md
+
+dataset_id: sentinel2_l2a
+role: classifier_input
+status: core_acquire
+source_url: "https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-2"
+access_method: "pystac-client + Copernicus Dataspace STAC API (or Microsoft Planetary Computer)"
+license: "Copernicus Sentinel Data Terms and Conditions (open access)"
+license_url: "https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice"
+
+# ── Fields to complete at download time ─────────────────────────────────────
+download_date: null          # YYYY-MM-DD
+query_aoi_bbox_wgs84: null   # [west, south, east, north] — must match config/study_area.yaml
+query_aoi_source: "data/catalog/aoi_final.geojson"
+
+# Seasons (record one entry per season; duplicate the block as needed)
+seasons:
+  - season: spring
+    date_range_start: null   # e.g. 2023-04-01
+    date_range_end: null     # e.g. 2023-05-31
+    scenes:
+      - product_id: null           # e.g. S2A_MSIL2A_20230415T…
+        tile_id: null              # e.g. 11SKA
+        sensing_datetime: null     # ISO-8601 UTC
+        processing_baseline: null  # e.g. 05.09
+        cloud_cover_pct: null
+        snow_ice_cover_pct: null
+        checksum_sha256: null
+        local_path: null           # relative to project root
+
+  - season: peak_growing
+    date_range_start: null
+    date_range_end: null
+    scenes: []
+
+  - season: late_season
+    date_range_start: null
+    date_range_end: null
+    scenes: []
+
+# ── Coverage QC (complete after coverage report) ────────────────────────────
+coverage_report_path: null   # e.g. results/coverage/sentinel2_coverage_2023.csv
+valid_obs_threshold_pct: 80  # pre-declared in pre_analysis_protocol.md §Inputs
+coverage_pass: null          # true / false / amendment_needed
+
+# ── Processing provenance ────────────────────────────────────────────────────
+processing_steps: []
+# Example entry:
+# - step: cloud_mask_and_composite
+#   script: src/imagery/sentinel2_composite.py
+#   conda_env: shadow-ecology
+#   python_version: null
+#   timestamp: null
+#   inputs: []      # list of product_ids consumed
+#   output_id: null
+
+notes: ""

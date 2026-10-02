@@ -1,0 +1,21 @@
+nlcd_code,nlcd_class_name,protocol_class_id,protocol_class_name,crosswalk_confidence,ambiguous,excluded,notes
+11,Open Water,,,,False,True,Excluded from primary interpretation (open water).
+12,Perennial Ice/Snow,,,,False,True,Not present in AOI; excluded if encountered.
+21,"Developed, Open Space",8,"Developed, transportation, or disturbed land",medium,True,False,Ambiguous with herbaceous grassland/pasture at low intensity; include unless explicitly excluded as urban core.
+22,"Developed, Low Intensity",8,"Developed, transportation, or disturbed land",high,False,False,
+23,"Developed, Medium Intensity",8,"Developed, transportation, or disturbed land",high,False,True,Urban cores excluded from primary interpretation per protocol §Domain.
+24,"Developed, High Intensity",8,"Developed, transportation, or disturbed land",high,False,True,Urban cores excluded from primary interpretation per protocol §Domain.
+31,Barren Land,6,"Barren, playa, saline, or sparsely vegetated surface",high,False,False,Includes active mine sites; active mines excluded as disturbance stratum unless analyzed separately.
+41,Deciduous Forest,1,Riparian/phreatophytic vegetation,medium,True,False,Deciduous forest in the AOI is predominantly riparian cottonwood/willow; confirm with NDVI phenology. Ambiguous with Woodland/pinyon-juniper.
+42,Evergreen Forest,7,Woodland/pinyon-juniper,high,False,False,Dominant evergreen is pinyon-juniper at higher elevations.
+43,Mixed Forest,7,Woodland/pinyon-juniper,medium,True,False,Ambiguous between riparian/phreatophytic and woodland; verify with elevation and NDVI timing.
+51,Dwarf Scrub,4,Shrubland,high,False,False,
+52,Shrub/Scrub,4,Shrubland,high,False,False,Most common upland class in the AOI.
+71,Grassland/Herbaceous,5,Herbaceous grassland/pasture,medium,True,False,Ambiguous with wet meadow/emergent wetland where mesic; ambiguous with irrigated pasture where water-managed.
+72,Sedge/Herbaceous,2,Wet meadow/emergent wetland,high,False,False,Strong indicator of wet meadow in Great Basin context.
+73,Lichens,6,"Barren, playa, saline, or sparsely vegetated surface",low,True,False,Rare in AOI; likely playa or sparsely vegetated if present.
+74,Moss,2,Wet meadow/emergent wetland,low,True,False,Rare; treat as wet meadow/emergent if present.
+81,Pasture/Hay,5,Herbaceous grassland/pasture,medium,True,False,Ambiguous with irrigated agriculture; cross-check with LANID. Irrigated hay likely maps to protocol class 3.
+82,Cultivated Crops,3,Irrigated agriculture,high,False,False,Dominant irrigated class in Walker Valley.
+90,Woody Wetlands,1,Riparian/phreatophytic vegetation,high,False,False,Mapped riparian/phreatophytic in Great Basin valley floors.
+95,Emergent Herbaceous Wetlands,2,Wet meadow/emergent wetland,high,False,False,Direct match to protocol class 2.
