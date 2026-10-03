@@ -19,13 +19,21 @@ study_area:
   # v2.0 includes annual series through 2023).  Three usable seasons
   # (spring Apr–May, peak Jul–Aug, late Sep–Oct) are available.
   imagery_target_year: 2023
-  reference_label_year: 2023   # NLCD annual 2023 product
+  reference_label_year: 2021   # NLCD 2021 Land Cover L48 — most recent year
+                                # available as a WCS coverage on the MRLC GeoServer.
+                                # NLCD Annual Collection 1.0 per-year rasters for
+                                # 2022–2023 are not yet served via WCS (only summary
+                                # change products). Update when MRLC publishes them.
   imagery_year_decision_date: "2026-10-01"
   imagery_year_rationale: >-
-    2023 selected as the primary year: most recent complete calendar year at
-    decision date, full three-season Sentinel-2 L2A archive available, and
-    within the NLCD annual series (1985–2023, Products v2.0 released June 2026).
-    Landsat Collection 2 L2 is available for historical context from 2000 onward.
+    Imagery target year 2023: most recent complete calendar year at decision
+    date, full three-season Sentinel-2 L2A archive available.
+    Reference label year 2021: NLCD_2021_Land_Cover_L48 is the most recent
+    traditional per-year land cover product available via the MRLC WCS
+    GetCoverage endpoint. NLCD Annual Collection 1.0 per-year rasters for
+    2022–2023 are not yet served as WCS coverages. The 2-year gap between
+    imagery (2023) and labels (2021) is documented; label-year alignment will
+    be revisited if MRLC publishes 2022/2023 per-year products before modeling.
     Year locked before imagery download per data_inventory.md §Acquisition checks.
   hydrologic_scope: >-
     Lower Walker River from the USGS Wabuska gage through Weber Reservoir and

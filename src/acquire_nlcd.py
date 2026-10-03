@@ -1,24 +1,47 @@
 """
-Week 2 — NLCD acquisition script
-==================================
-Downloads the NLCD annual land-cover product for the reference label year from
-the MRLC / USGS ScienceBase, clips it to the frozen AOI bbox, and writes a
+Week 2 — NLCD acquisition
+==========================
+Downloads the NLCD 2021 Land Cover L48 product for the AOI and writes a
 filled manifest at data/catalog/manifest_nlcd.yaml.
 
-Usage (from project root, shadow-ecology conda env active):
-    python src/acquire_nlcd.py [--dry-run]
+MRLC no longer allows anonymous programmatic downloads of NLCD land cover
+rasters (S3 bucket policy blocks direct access; WCS GetCoverage returns 404
+for land cover layers).
 
-Prerequisites (in addition to the conda env):
-    pip install requests  (usually already present)
+Two supported approaches:
+
+  A) earthaccess (recommended, fully automated):
+       conda install -c conda-forge earthaccess
+       python src/acquire_nlcd.py
+
+     earthaccess authenticates via NASA Earthdata Login (free account required)
+     and downloads the file automatically.
+
+  B) Manual download (fallback, no extra dependencies):
+     1. Go to https://www.mrlc.gov/data and select:
+          Product:    NLCD 2021 Land Cover (CONUS)
+          Layer Name: NLCD_2021_Land_Cover_L48
+          Format:     GeoTIFF
+     2. Draw a bounding box or enter the AOI coordinates:
+          West: -119.20   South: 38.50   East: -118.55   North: 39.22
+     3. Download the resulting zip to:
+          data/raw/nlcd/
+     4. Run this script with --register to record it in the manifest:
+          python src/acquire_nlcd.py --register data/raw/nlcd/<downloaded_file>.zip
+
+Usage:
+    python src/acquire_nlcd.py               # uses earthaccess (auto)
+    python src/acquire_nlcd.py --dry-run     # show what would be downloaded
+    python src/acquire_nlcd.py --register <zip_path>   # register manual download
 
 Governance:
     NLCD 2021 Products v2.0 is CC0 1.0.  Cite USGS/MRLC.
-    Label year must match reference_label_year from config/study_area.yaml.
 """
 from __future__ import annotations
 
 import argparse
 import sys
+import zipfile
 from datetime import datetime
 from pathlib import Path
 
@@ -36,126 +59,188 @@ from src.settings import PROJECT_ROOT
 
 OUTPUT_DIR = PROJECT_ROOT / "data" / "raw" / "nlcd"
 
-# NLCD annual series download root on MRLC.  The exact filename changes by
-# release; update this URL after verifying the current product at:
-# https://www.mrlc.gov/data
-# Format: nlcd_YYYY_land_cover_l48_YYYYMMDD.img or .tif (varies by year)
-NLCD_CONUS_BASE_URL = "https://s3-us-west-2.amazonaws.com/mrlc/nlcd_{year}_land_cover_l48_20230630.img"
+# Earthdata short name and version for NLCD 2021 Land Cover L48
+EARTHDATA_SHORT_NAME = "NLCD_LANDCOVER_ESP_CONUS_2021"
+EARTHDATA_VERSION = "1"
+
+# Fallback: known concept ID on NASA CMR for NLCD 2021 Land Cover CONUS
+CMR_CONCEPT_ID = "C2763265063-LPCLOUD"
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--dry-run", action="store_true")
+    p = argparse.ArgumentParser(description=__doc__,
+                                formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("--dry-run", action="store_true",
+                   help="Show what would be downloaded without downloading.")
+    p.add_argument("--register", metavar="ZIP_PATH",
+                   help="Register a manually downloaded zip file in the manifest.")
     return p
 
 
-def download_nlcd(url: str, out_path: Path) -> bool:
-    """Download the NLCD CONUS file.  Returns True on success."""
-    import urllib.request
-    import urllib.error
-    try:
-        print(f"Downloading NLCD from {url} …")
-        urllib.request.urlretrieve(url, out_path)
-        return True
-    except urllib.error.HTTPError as exc:
-        print(f"ERROR downloading NLCD: {exc}", file=sys.stderr)
-        print("Check the MRLC download page for the current URL:", file=sys.stderr)
-        print("  https://www.mrlc.gov/data", file=sys.stderr)
-        return False
+# ── earthaccess download ──────────────────────────────────────────────────────
 
-
-def clip_to_aoi(in_path: Path, out_path: Path, bbox: list[float]) -> None:
-    """Clip the NLCD raster to the AOI bounding box using rasterio."""
+def download_via_earthaccess(bbox: list[float], out_dir: Path, dry_run: bool) -> Path | None:
+    """Download NLCD 2021 Land Cover L48 via NASA earthaccess."""
     try:
-        import rasterio
-        from rasterio.mask import mask as rio_mask
-        from shapely.geometry import box
-        import json
+        import earthaccess
     except ImportError:
-        print("ERROR: rasterio and shapely are required for clipping.", file=sys.stderr)
-        sys.exit(1)
+        print("earthaccess is not installed.", file=sys.stderr)
+        print("Install with:  conda install -c conda-forge earthaccess", file=sys.stderr)
+        return None
+
+    print("Authenticating with NASA Earthdata Login via earthaccess…")
+    try:
+        earthaccess.login(strategy="netrc")
+    except Exception:
+        try:
+            earthaccess.login(strategy="environment")
+        except Exception:
+            earthaccess.login(strategy="interactive")
 
     west, south, east, north = bbox
-    geom = box(west, south, east, north)
-    with rasterio.open(in_path) as src:
-        # Re-project geometry to source CRS
-        from pyproj import Transformer
-        transformer = Transformer.from_crs("EPSG:4326", src.crs.to_epsg()
-                                           if src.crs.to_epsg() else src.crs.to_wkt(),
-                                           always_xy=True)
-        coords = list(geom.exterior.coords)
-        xs, ys = zip(*[transformer.transform(x, y) for x, y in coords])
-        from shapely.geometry import Polygon
-        geom_proj = Polygon(zip(xs, ys))
+    print(f"Searching for NLCD 2021 Land Cover (CONUS) over AOI bbox…")
+    results = earthaccess.search_data(
+        short_name=EARTHDATA_SHORT_NAME,
+        version=EARTHDATA_VERSION,
+        bounding_box=(west, south, east, north),
+    )
+    if not results:
+        # Try by concept ID
+        results = earthaccess.search_data(concept_id=CMR_CONCEPT_ID)
 
-        out_image, out_transform = rio_mask(
-            src, [geom_proj.__geo_interface__], crop=True
-        )
-        out_meta = src.meta.copy()
-        out_meta.update({
-            "driver": "GTiff",
-            "height": out_image.shape[1],
-            "width": out_image.shape[2],
-            "transform": out_transform,
-            "compress": "lzw",
-        })
-        with rasterio.open(out_path, "w", **out_meta) as dst:
-            dst.write(out_image)
+    if not results:
+        print("ERROR: No NLCD 2021 results found on NASA Earthdata.", file=sys.stderr)
+        print("Try the manual download approach described in the script header.",
+              file=sys.stderr)
+        return None
 
+    print(f"Found {len(results)} granule(s).")
+    if dry_run:
+        for r in results:
+            print(f"  [dry-run] {r}")
+        return None
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    downloaded = earthaccess.download(results, str(out_dir))
+    if downloaded:
+        return Path(downloaded[0])
+    return None
+
+
+# ── Manual registration ───────────────────────────────────────────────────────
+
+def register_manual_download(zip_path: Path, label_year: int, bbox: list[float]) -> Path:
+    """Unzip a manually downloaded NLCD file and return the .img or .tif path."""
+    if not zip_path.exists():
+        print(f"ERROR: file not found: {zip_path}", file=sys.stderr)
+        sys.exit(1)
+
+    out_dir = OUTPUT_DIR
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"Extracting {zip_path.name} …")
+    with zipfile.ZipFile(zip_path) as zf:
+        zf.extractall(out_dir)
+
+    # Find the extracted raster
+    for ext in ("*.img", "*.tif", "*.tiff"):
+        matches = sorted(out_dir.glob(ext))
+        if matches:
+            return matches[0]
+
+    print("WARNING: no .img/.tif found after extraction. "
+          "Check the contents of the zip manually.", file=sys.stderr)
+    return zip_path
+
+
+# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
     args = build_parser().parse_args()
-    dry_run: bool = args.dry_run
 
     years = imagery_years()
     label_year = years["reference_label_year"]
     bbox = aoi_bbox()
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     manifest = load_or_init_manifest("nlcd")
-    manifest["download_date"] = datetime.utcnow().strftime("%Y-%m-%d")
     manifest["label_year"] = label_year
+    manifest["download_date"] = datetime.utcnow().strftime("%Y-%m-%d")
 
-    url = NLCD_CONUS_BASE_URL.format(year=label_year)
-    conus_file = OUTPUT_DIR / f"nlcd_{label_year}_land_cover_l48_conus.img"
-    clipped_file = OUTPUT_DIR / f"nlcd_{label_year}_lower_walker_aoi.tif"
-
-    manifest["local_path"] = str(clipped_file.relative_to(PROJECT_ROOT))
-
-    if dry_run:
-        print(f"[dry-run] Would download: {url}")
-        print(f"[dry-run] Would clip to:  {clipped_file}")
-        print("[dry-run] Manifest NOT written.")
+    # ── Manual registration path ──────────────────────────────────────────────
+    if args.register:
+        zip_path = Path(args.register)
+        raster = register_manual_download(zip_path, label_year, bbox)
+        cksum = sha256(raster)
+        manifest["local_path"] = str(raster.relative_to(PROJECT_ROOT))
+        manifest["source_url"] = "https://www.mrlc.gov/data (manual download)"
+        manifest["checksum_sha256"] = cksum
+        record_processing_step(manifest, {
+            "step": "manual_download_registration",
+            "script": "src/acquire_nlcd.py --register",
+            "parameters": {
+                "source_zip": str(zip_path),
+                "label_year": label_year,
+            },
+        })
+        save_manifest("nlcd", manifest)
+        print(f"Registered: {raster.name}  SHA-256: {cksum[:12]}…")
+        print("Manifest written to data/catalog/manifest_nlcd.yaml")
         return
 
-    if not conus_file.exists():
-        success = download_nlcd(url, conus_file)
-        if not success:
-            print("\nDownload failed. Verify the URL at https://www.mrlc.gov/data "
-                  "and update NLCD_CONUS_BASE_URL in this script.", file=sys.stderr)
-            sys.exit(1)
+    # ── Dry-run ───────────────────────────────────────────────────────────────
+    if args.dry_run:
+        print(f"[dry-run] Label year      : {label_year}")
+        print(f"[dry-run] AOI bbox (WGS84): {bbox}")
+        print(f"[dry-run] Output dir      : {OUTPUT_DIR}")
+        print()
+        _print_manual_instructions(bbox)
+        return
 
-    manifest["checksum_sha256"] = sha256(conus_file)
-    print(f"CONUS file SHA-256: {manifest['checksum_sha256']}")
+    # ── earthaccess automated download ───────────────────────────────────────
+    result = download_via_earthaccess(bbox, OUTPUT_DIR, dry_run=False)
 
-    print(f"Clipping to AOI bbox {bbox} …")
-    clip_to_aoi(conus_file, clipped_file, bbox)
-    manifest["local_path"] = str(clipped_file.relative_to(PROJECT_ROOT))
-    print(f"Clipped NLCD written to {clipped_file}")
+    if result is None:
+        print()
+        print("Automated download failed or earthaccess is not installed.")
+        print("Use the manual download approach:")
+        _print_manual_instructions(bbox)
+        sys.exit(1)
 
+    cksum = sha256(result)
+    manifest["local_path"] = str(result.relative_to(PROJECT_ROOT))
+    manifest["source_url"] = "NASA Earthdata / earthaccess"
+    manifest["checksum_sha256"] = cksum
     record_processing_step(manifest, {
-        "step": "download_and_clip",
+        "step": "earthaccess_download",
         "script": "src/acquire_nlcd.py",
-        "conda_env": "shadow-ecology",
         "parameters": {
+            "short_name": EARTHDATA_SHORT_NAME,
             "label_year": label_year,
-            "source_url": url,
-            "clip_bbox_wgs84": bbox,
-            "output_crs": "EPSG:32611 (after reprojection in modeling pipeline)",
+            "aoi_bbox_wgs84": bbox,
         },
     })
     save_manifest("nlcd", manifest)
-    print(f"\nManifest written to data/catalog/manifest_nlcd.yaml")
+    print(f"Downloaded: {result.name}  SHA-256: {cksum[:12]}…")
+    print("Manifest written to data/catalog/manifest_nlcd.yaml")
+
+
+def _print_manual_instructions(bbox: list[float]) -> None:
+    west, south, east, north = bbox
+    print("─" * 60)
+    print("MANUAL DOWNLOAD INSTRUCTIONS")
+    print("─" * 60)
+    print("MRLC requires authenticated download. Two options:\n")
+    print("Option A — earthaccess (free NASA Earthdata account):")
+    print("  1. Register at https://urs.earthdata.nasa.gov/")
+    print("  2. conda install -c conda-forge earthaccess")
+    print("  3. python src/acquire_nlcd.py\n")
+    print("Option B — MRLC web tool (no account required):")
+    print("  1. Go to https://www.mrlc.gov/data")
+    print("  2. Select: National Land Cover Database > NLCD 2021 Land Cover > CONUS")
+    print(f"  3. Enter bbox:  West={west}  South={south}  East={east}  North={north}")
+    print("  4. Download the zip to data/raw/nlcd/")
+    print("  5. Register it:  python src/acquire_nlcd.py --register data/raw/nlcd/<file>.zip")
+    print("─" * 60)
 
 
 if __name__ == "__main__":

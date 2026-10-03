@@ -91,7 +91,8 @@ def download_scene(item: "pystac.Item", output_dir: Path, dry_run: bool) -> dict
         if asset.media_type and "image/tiff" not in asset.media_type:
             continue
         href = asset.href
-        local_file = scene_dir / Path(href).name
+        # Strip query string from signed URL before using as a filename
+        local_file = scene_dir / Path(href.split("?")[0]).name
         if not dry_run:
             import urllib.request
             if not local_file.exists():
